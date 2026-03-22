@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heera Printing Press - Begusarai</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#060f26;--navy2:#0b1735;--navy3:#101f45;--blue:#153070;--gold:#d4a843;--gold2:#f0c96a;--gold3:#b8892a;--cream:#fdf8ee;--white:#fff;--muted:#8a9bbf;--text:#0d1830;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--navy2);}
+::-webkit-scrollbar-thumb{background:var(--gold);}
+.dot{width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;animation:blink 1.4s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.topbar{background:var(--gold);padding:9px 5%;display:flex;align-items:center;justify-content:space-between;font-size:.78rem;font-weight:600;color:var(--navy);flex-wrap:wrap;gap:6px;}
+.topbar a{color:var(--navy);display:flex;align-items:center;gap:6px;}
+.topbar-left{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;}
+.live-dot{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:var(--gold);padding:3px 12px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.06em;}
+nav{background:rgba(6,15,38,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(212,168,67,.15);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:999;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:10px;}
+.logo-box{width:34px;height:34px;background:var(--gold);clip-path:polygon(50% 0%,100% 50%,50% 100%,0 50%);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-box span{color:var(--navy);font-size:.9rem;font-weight:900;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.65);letter-spacing:.07em;text-transform:uppercase;transition:color .25s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-btn{background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--navy);padding:10px 22px;border-radius:4px;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all .25s;box-shadow:0 4px 16px rgba(212,168,67,.3);}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,.5);}
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;padding:90px 5% 60px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 50%,var(--blue) 100%);}
+.hgb{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(212,168,67,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,168,67,.04) 1px,transparent 1px);background-size:55px 55px;}
+.hdb{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(212,168,67,.07) 1.5px,transparent 1.5px);background-size:28px 28px;}
+.orb{position:absolute;border-radius:50%;pointer-events:none;}
+.orb1{width:700px;height:700px;top:-250px;right:-150px;background:radial-gradient(circle,rgba(212,168,67,.1) 0%,transparent 70%);}
+.orb2{width:500px;height:500px;bottom:-200px;left:-150px;background:radial-gradient(circle,rgba(21,48,112,.5) 0%,transparent 70%);}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;width:100%;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.3);border-radius:3px;padding:7px 16px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.5s infinite;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6.5vw,5.5rem);font-weight:700;line-height:1.06;color:var(--white);margin-bottom:1.5rem;}
+.gw{color:var(--gold);font-style:italic;}
+.hero-p{font-size:1rem;color:rgba(255,255,255,.6);line-height:1.75;max-width:500px;margin-bottom:2.2rem;font-weight:300;}
+.hero-p strong{color:var(--gold);font-weight:600;}
+.btn-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--navy);padding:13px 30px;border-radius:4px;font-size:.86rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all .25s;box-shadow:0 5px 18px rgba(212,168,67,.35);display:inline-flex;align-items:center;gap:8px;}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(212,168,67,.5);}
+.btn-ow{background:transparent;color:var(--white);padding:13px 30px;border-radius:4px;font-size:.86rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,.2);transition:all .25s;display:inline-flex;align-items:center;gap:8px;}
+.btn-ow:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+.trust{display:flex;flex-wrap:wrap;gap:1.5rem;}
+.ti{display:flex;align-items:center;gap:7px;font-size:.82rem;color:rgba(255,255,255,.5);}
+.hero-right{display:flex;flex-direction:column;gap:1rem;}
+.hcard{background:rgba(255,255,255,.04);backdrop-filter:blur(8px);border:1px solid rgba(212,168,67,.18);border-radius:10px;padding:1.6rem;position:relative;overflow:hidden;transition:transform .3s;}
+.hcard:hover{transform:translateY(-4px);}
+.hcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.hcr{display:flex;align-items:center;gap:12px;margin-bottom:.8rem;}
+.hci{width:42px;height:42px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold3));display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--navy);}
+.hct{font-size:.88rem;font-weight:600;color:var(--white);}
+.hcs{font-size:.73rem;color:var(--muted);}
+.hcn{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1;}
+.hcd{font-size:.75rem;color:var(--muted);margin-top:3px;}
+.meter{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;margin-top:.8rem;}
+.mfill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));}
+.spair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.sbox{background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.14);border-radius:8px;padding:1.2rem;text-align:center;}
+.sn{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;display:block;}
+.sl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;display:block;margin-top:3px;}
+.marquee-strip{background:var(--gold);padding:11px 0;overflow:hidden;}
+.mtrack{display:flex;white-space:nowrap;animation:marquee 28s linear infinite;}
+.mitem{display:inline-flex;align-items:center;gap:8px;padding:0 2rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);}
+.msep{opacity:.35;font-size:.55rem;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.sec{padding:90px 5%;position:relative;}
+.sec-dark{background:var(--navy2);}
+.sec-mid{background:var(--navy3);}
+.sec-light{background:var(--cream);}
+.dbg{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(212,168,67,.05) 1.5px,transparent 1.5px);background-size:28px 28px;}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;}
+.tag::before{content:'';width:22px;height:1.5px;background:var(--gold);display:block;}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.1;margin-bottom:.8rem;}
+.sec-h em{font-style:italic;color:var(--gold);}
+.sec-h.dk{color:var(--text);}
+.sec-p{font-size:.95rem;line-height:1.75;color:var(--muted);max-width:520px;font-weight:300;}
+.sec-p.dk{color:#4a5568;}
+.divider{height:1px;background:linear-gradient(to right,transparent,rgba(212,168,67,.22),transparent);}
+/* SERVICES */
+.svc-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:2rem;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.svc-card{background:rgba(255,255,255,.03);border:1px solid rgba(212,168,67,.1);border-radius:10px;padding:2rem 1.8rem;position:relative;overflow:hidden;transition:all .35s;cursor:default;}
+.svc-card:hover{transform:translateY(-6px);border-color:rgba(212,168,67,.4);box-shadow:0 18px 48px rgba(0,0,0,.4);}
+.svc-n{position:absolute;top:1.2rem;right:1.5rem;font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:rgba(212,168,67,.06);line-height:1;}
+.svc-ico{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,rgba(212,168,67,.14),rgba(212,168,67,.04));border:1px solid rgba(212,168,67,.18);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.3rem;}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:700;color:var(--white);margin-bottom:.5rem;}
+.svc-card p{font-size:.84rem;color:var(--muted);line-height:1.65;}
+.svc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem;}
+.sp{font-size:.65rem;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:20px;background:rgba(212,168,67,.07);border:1px solid rgba(212,168,67,.18);color:var(--gold);text-transform:uppercase;}
+/* WHY */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.why-card{background:linear-gradient(135deg,var(--blue),var(--navy3));border:1px solid rgba(212,168,67,.18);border-radius:12px;padding:3rem;position:relative;overflow:hidden;}
+.why-card::before{content:'HEERA';position:absolute;bottom:-15px;right:-5px;font-family:'Cormorant Garamond',serif;font-size:6rem;font-weight:700;color:rgba(212,168,67,.05);line-height:1;pointer-events:none;}
+.why-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold3),var(--gold2),var(--gold3));}
+.wc-badge{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:var(--navy);font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:5px 13px;border-radius:2px;margin-bottom:1.3rem;}
+.wc-q{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;color:var(--white);line-height:1.5;margin-bottom:1.8rem;}
+.wc-line{height:1px;background:rgba(212,168,67,.18);margin-bottom:1.8rem;}
+.wc-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.ws{text-align:center;padding:.8rem;}
+.wsn{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold);display:block;line-height:1;}
+.wsl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;display:block;margin-top:3px;}
+.wfl{display:flex;flex-direction:column;gap:1.2rem;}
+.wf{display:flex;gap:1rem;align-items:flex-start;padding:1.4rem;border-radius:8px;background:rgba(212,168,67,.03);border:1px solid rgba(212,168,67,.07);transition:all .3s;}
+.wf:hover{background:rgba(212,168,67,.07);border-color:rgba(212,168,67,.2);transform:translateX(5px);}
+.wfi{width:46px;height:46px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold3));display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--navy);}
+.wft{font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:3px;}
+.wfd{font-size:.82rem;color:var(--muted);line-height:1.6;}
+/* GALLERY */
+.gal-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.5rem;}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:10px;}
+.gi{border-radius:8px;overflow:hidden;position:relative;cursor:pointer;background:linear-gradient(135deg,rgba(21,48,112,.5),rgba(6,15,38,.8));border:1px solid rgba(212,168,67,.1);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.7rem;transition:all .3s;}
+.gi::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(212,168,67,.05) 1px,transparent 1px);background-size:18px 18px;pointer-events:none;}
+.gi:hover{border-color:rgba(212,168,67,.45);transform:scale(1.025);box-shadow:0 14px 36px rgba(0,0,0,.5);}
+.gi.big{grid-column:span 2;grid-row:span 2;}
+.gi.tall{grid-row:span 2;}
+.gi-em{font-size:2.3rem;opacity:.45;}
+.gi-lb{font-size:.72rem;color:rgba(212,168,67,.65);letter-spacing:.09em;text-transform:uppercase;font-weight:600;text-align:center;padding:0 .8rem;}
+.gi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,15,38,.9) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1.2rem;}
+.gi:hover .gi-ov{opacity:1;}
+.gi-ov span{font-size:.82rem;font-weight:600;color:var(--gold);letter-spacing:.04em;}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-content p{font-size:.92rem;color:#4a5568;line-height:1.8;margin-bottom:1rem;}
+.about-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.4rem 0;}
+.ap{padding:5px 15px;border-radius:20px;font-size:.76rem;font-weight:600;background:rgba(212,168,67,.09);border:1px solid rgba(212,168,67,.25);color:var(--gold3);}
+.about-btns{display:flex;gap:1rem;margin-top:1.8rem;flex-wrap:wrap;}
+.btn-dk{background:var(--navy);color:var(--white);padding:11px 26px;border-radius:4px;font-size:.83rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all .25s;border:1.5px solid var(--gold);display:inline-flex;align-items:center;gap:7px;}
+.btn-dk:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px);}
+.proc-card{background:linear-gradient(135deg,var(--navy),var(--blue));border:1px solid rgba(212,168,67,.18);border-radius:12px;padding:2.5rem;position:relative;overflow:hidden;}
+.proc-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold3),var(--gold),var(--gold2),var(--gold3));}
+.proc-lbl{font-size:.72rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:1.5rem;}
+.step{display:flex;gap:1rem;align-items:flex-start;padding:.8rem 0;}
+.step-num{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold3));display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--navy);}
+.step-t{font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:2px;}
+.step-d{font-size:.78rem;color:var(--muted);line-height:1.5;}
+.step-ln{width:1px;height:14px;background:rgba(212,168,67,.2);margin:1px 0 1px 16px;}
+.fchip{position:absolute;bottom:-1.5rem;right:-1rem;background:var(--gold);border-radius:8px;padding:1.1rem 1.4rem;box-shadow:0 10px 28px rgba(212,168,67,.3);text-align:center;min-width:150px;}
+.fcn{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--navy);display:block;line-height:1;}
+.fcl{font-size:.68rem;font-weight:700;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;opacity:.7;}
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3rem;}
+.tc{background:rgba(255,255,255,.03);border:1px solid rgba(212,168,67,.1);border-radius:10px;padding:2rem;position:relative;overflow:hidden;transition:all .3s;}
+.tc:hover{border-color:rgba(212,168,67,.35);transform:translateY(-4px);box-shadow:0 18px 38px rgba(0,0,0,.35);}
+.tc::before{content:'"';position:absolute;top:-8px;right:1.3rem;font-family:'Cormorant Garamond',serif;font-size:7rem;font-weight:700;color:rgba(212,168,67,.06);line-height:1;}
+.tc-stars{color:var(--gold);font-size:.85rem;letter-spacing:2px;margin-bottom:1rem;}
+.tc-text{font-size:.88rem;color:rgba(255,255,255,.68);line-height:1.75;font-style:italic;margin-bottom:1.4rem;}
+.tc-auth{display:flex;align-items:center;gap:11px;}
+.tc-av{width:42px;height:42px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold3));display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:var(--navy);}
+.tc-nm{font-size:.88rem;font-weight:600;color:var(--white);}
+.tc-ro{font-size:.73rem;color:var(--muted);}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:4rem;align-items:start;}
+.iblocks{display:flex;flex-direction:column;gap:.9rem;margin-top:1.8rem;}
+.ib{display:flex;align-items:flex-start;gap:1rem;background:var(--white);border-radius:8px;padding:1.3rem 1.5rem;border:1.5px solid rgba(0,0,0,.06);transition:all .25s;color:var(--text);}
+a.ib:hover{border-color:var(--gold);transform:translateX(5px);box-shadow:0 6px 22px rgba(212,168,67,.1);}
+.ib-ico{width:46px;height:46px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.25rem;}
+.ico-wa{background:#25D366;}
+.ico-em{background:#EA4335;}
+.ico-ph{background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--navy);}
+.ico-ad{background:linear-gradient(135deg,var(--blue),var(--navy3));color:var(--white);}
+.ico-ti{background:linear-gradient(135deg,#7c3aed,#4f46e5);color:var(--white);}
+.ib-lbl{font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.ib-val{font-size:.9rem;font-weight:600;color:var(--text);}
+.ib-hint{font-size:.73rem;color:var(--muted);margin-top:2px;}
+.map-btn{display:flex;align-items:center;gap:1rem;margin-top:1.3rem;background:linear-gradient(135deg,var(--navy),var(--blue));border:1.5px solid rgba(212,168,67,.22);border-radius:10px;padding:1.3rem 1.5rem;transition:all .3s;color:var(--white);}
+.map-btn:hover{border-color:var(--gold);transform:translateY(-3px);}
+.map-ico{width:50px;height:50px;border-radius:9px;background:linear-gradient(135deg,#EA4335,#c0392b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+.map-lbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
+.map-addr{font-size:.9rem;font-weight:600;color:var(--white);}
+.map-hint{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:2px;}
+.fbox{background:var(--navy2);border:1px solid rgba(212,168,67,.18);border-radius:12px;padding:2.5rem;position:relative;overflow:hidden;}
+.fbox::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold3),var(--gold2),var(--gold3));}
+.ftitle{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;color:var(--white);margin-bottom:.3rem;}
+.fsub{font-size:.8rem;color:var(--muted);margin-bottom:1.8rem;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:1.1rem;}
+.fg label{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.fg input,.fg textarea,.fg select{padding:11px 14px;background:rgba(255,255,255,.05);border:1.5px solid rgba(212,168,67,.14);border-radius:5px;font-family:'Outfit',sans-serif;font-size:.87rem;color:var(--white);outline:none;transition:all .25s;resize:vertical;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.22);}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--gold);background:rgba(212,168,67,.05);}
+.fg select option{background:var(--navy2);}
+.fg textarea{min-height:95px;}
+.send-btn{width:100%;padding:14px;border:none;border-radius:5px;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--navy);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 5px 18px rgba(212,168,67,.3);}
+.send-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(212,168,67,.5);}
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(212,168,67,.12);padding:65px 5% 28px;position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(212,168,67,.025) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3.5rem;position:relative;z-index:1;}
+.ft-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.ft-brand p{font-size:.85rem;color:rgba(255,255,255,.38);line-height:1.7;max-width:280px;}
+.ft-contact{margin-top:1.3rem;display:flex;flex-direction:column;gap:.55rem;}
+.ftc{display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.45);transition:color .2s;}
+a.ftc:hover{color:var(--gold);}
+.ft-col h4{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
+.ft-col ul a{font-size:.83rem;color:rgba(255,255,255,.4);transition:color .2s;}
+.ft-col ul a:hover{color:var(--gold);}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.8rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:relative;z-index:1;}
+.ft-bottom p{font-size:.77rem;color:rgba(255,255,255,.22);}
+.ft-bottom a{color:var(--gold);}
+.ft-chip{display:flex;align-items:center;gap:7px;background:rgba(212,168,67,.07);border:1px solid rgba(212,168,67,.18);border-radius:20px;padding:5px 13px;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);}
+.wa-float{position:fixed;bottom:26px;right:26px;z-index:998;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 5px 22px rgba(37,211,102,.5);transition:transform .3s;animation:wap 2.5s infinite;}
+.wa-float:hover{transform:scale(1.12);}
+@keyframes wap{0%,100%{box-shadow:0 5px 22px rgba(37,211,102,.45);}50%{box-shadow:0 5px 32px rgba(37,211,102,.75);}}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.fl{opacity:0;transform:translateX(-28px);transition:opacity .6s ease,transform .6s ease;}
+.fr{opacity:0;transform:translateX(28px);transition:opacity .6s ease,transform .6s ease;}
+.vis{opacity:1 !important;transform:none !important;}
+@media(max-width:900px){.topbar{display:none;}.nav-links{display:none;}.why-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem;}.testi-grid{grid-template-columns:1fr 1fr;}.gal-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto;}.gi.big,.gi.tall{grid-column:span 1;grid-row:span 1;}.ft-grid{grid-template-columns:1fr 1fr;gap:2rem;}.ft-brand{grid-column:span 2;}.frow{grid-template-columns:1fr;}.hero-inner{grid-template-columns:1fr;}.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}.svc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.sec{padding:65px 5%;}.svc-grid,.testi-grid,.gal-grid{grid-template-columns:1fr;}.hero-right{grid-template-columns:1fr;}.ft-grid{grid-template-columns:1fr;}.ft-brand{grid-column:span 1;}.ft-bottom{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/917762991422" target="_blank" class="wa-float">💬</a>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="https://wa.me/917762991422" target="_blank">💬 +91 77629 91422</a>
+    <a href="mailto:meetshristisinha@gmail.com">✉️ meetshristisinha@gmail.com</a>
+    <span>📍 Ward No-33, Mungeriganj, Begusarai - 851101</span>
+  </div>
+  <div class="live-dot"><span class="dot"></span> Available 24x7</div>
+</div>
+
+<nav>
+  <div class="logo">
+    <div class="logo-box"><span>H</span></div>
+    Heera Printing Press
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testi">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/917762991422?text=Hello! I want a quote from Heera Printing Press." target="_blank" class="nav-btn">Get Free Quote</a>
+</nav>
+
+<section id="hero">
+  <div class="hgb"></div>
+  <div class="hdb"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="badge"><span class="bdot"></span> Begusarai's Premier Print Studio</div>
+      <h1 class="hero-h1">Where Every<br>Print Tells a<br><span class="gw">Story.</span></h1>
+      <p class="hero-p">From <strong>visiting cards to wedding invitations</strong>, flex banners to custom packaging — Heera Printing Press delivers <strong>world-class print quality</strong> right here in Begusarai.</p>
+      <div class="btn-row">
+        <a href="https://wa.me/917762991422?text=Hello! I want a quote from Heera Printing Press." target="_blank" class="btn-gold">💬 WhatsApp Us Now</a>
+        <a href="#services" class="btn-ow">Explore Services</a>
+      </div>
+      <div class="trust">
+        <span class="ti">✅ 100% Quality Guarantee</span>
+        <span class="ti">⚡ Express Delivery</span>
+        <span class="ti">📞 Contact 24x7</span>
+      </div>
+    </div>
+    <div class="hero-right fr">
+      <div class="hcard">
+        <div class="hcr">
+          <div class="hci">🖨️</div>
+          <div><div class="hct">Orders in Production</div><div class="hcs">Active right now</div></div>
+        </div>
+        <div class="hcn">24+</div>
+        <div class="hcd">Print jobs currently in progress</div>
+        <div class="meter"><div class="mfill" style="width:78%"></div></div>
+      </div>
+      <div class="spair">
+        <div class="sbox"><span class="sn">500+</span><span class="sl">Happy Clients</span></div>
+        <div class="sbox"><span class="sn">50K+</span><span class="sl">Prints Done</span></div>
+      </div>
+      <div class="hcard">
+        <div class="hcr">
+          <div class="hci">📍</div>
+          <div><div class="hct">Location</div><div class="hcs">Ward No-33, Mungeriganj, Begusarai</div></div>
+        </div>
+        <div class="hcr" style="margin-bottom:0">
+          <div class="hci" style="background:linear-gradient(135deg,#22c55e,#16a34a)">⏰</div>
+          <div><div class="hct">Contact Hours</div><div class="hcs" style="color:#22c55e;font-weight:600">Available 24x7</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="mtrack">
+    <span class="mitem">🖨️ Visiting Cards <span class="msep">◆</span></span>
+    <span class="mitem">📋 Flex Banners <span class="msep">◆</span></span>
+    <span class="mitem">💍 Wedding Cards <span class="msep">◆</span></span>
+    <span class="mitem">📦 Custom Packaging <span class="msep">◆</span></span>
+    <span class="mitem">📰 Brochures and Flyers <span class="msep">◆</span></span>
+    <span class="mitem">📚 Books and Diaries <span class="msep">◆</span></span>
+    <span class="mitem">🏆 Premium Quality <span class="msep">◆</span></span>
+    <span class="mitem">⚡ Fast Delivery <span class="msep">◆</span></span>
+    <span class="mitem">💯 100% Satisfaction <span class="msep">◆</span></span>
+    <span class="mitem">🖨️ Visiting Cards <span class="msep">◆</span></span>
+    <span class="mitem">📋 Flex Banners <span class="msep">◆</span></span>
+    <span class="mitem">💍 Wedding Cards <span class="msep">◆</span></span>
+    <span class="mitem">📦 Custom Packaging <span class="msep">◆</span></span>
+    <span class="mitem">📰 Brochures and Flyers <span class="msep">◆</span></span>
+    <span class="mitem">📚 Books and Diaries <span class="msep">◆</span></span>
+    <span class="mitem">🏆 Premium Quality <span class="msep">◆</span></span>
+    <span class="mitem">⚡ Fast Delivery <span class="msep">◆</span></span>
+    <span class="mitem">💯 100% Satisfaction <span class="msep">◆</span></span>
+  </div>
+</div>
+
+<section id="services" class="sec sec-dark">
+  <div class="dbg"></div>
+  <div class="svc-top">
+    <div><div class="tag">What We Offer</div><h2 class="sec-h">Our <em>Premium</em> Print Services</h2></div>
+    <p class="sec-p">High-quality printing for every need — fast turnaround, best prices, unmatched finishing.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card fu"><div class="svc-n">01</div><div class="svc-ico">🪪</div><h3>Visiting Cards</h3><p>Premium business cards that make a powerful first impression. Glossy, matte, UV spot, or embossed finishes available.</p><div class="svc-pills"><span class="sp">Matte</span><span class="sp">Glossy</span><span class="sp">UV Spot</span><span class="sp">Embossed</span></div></div>
+    <div class="svc-card fu"><div class="svc-n">02</div><div class="svc-ico">📋</div><h3>Flex and Banners</h3><p>Large format flex printing, vinyl banners, and outdoor signage. Vivid colors, weather-resistant, fade-proof materials.</p><div class="svc-pills"><span class="sp">Flex Print</span><span class="sp">Vinyl</span><span class="sp">Backlit</span><span class="sp">Hoarding</span></div></div>
+    <div class="svc-card fu"><div class="svc-n">03</div><div class="svc-ico">📰</div><h3>Brochures and Flyers</h3><p>Eye-catching pamphlets, bi-fold, tri-fold brochures for businesses, campaigns, and promotions. Bulk quantity available.</p><div class="svc-pills"><span class="sp">Bi-fold</span><span class="sp">Tri-fold</span><span class="sp">A4/A5</span><span class="sp">Bulk</span></div></div>
+    <div class="svc-card fu"><div class="svc-n">04</div><div class="svc-ico">💍</div><h3>Wedding and Event Cards</h3><p>Stunning invitation cards for weddings, engagements, birthdays, and special occasions with premium paper and custom designs.</p><div class="svc-pills"><span class="sp">Wedding</span><span class="sp">Birthday</span><span class="sp">Invitation</span><span class="sp">Custom</span></div></div>
+    <div class="svc-card fu"><div class="svc-n">05</div><div class="svc-ico">📦</div><h3>Custom Packaging</h3><p>Branded boxes, pouches, and product packaging that elevate your brand identity. Perfect for businesses and gifting.</p><div class="svc-pills"><span class="sp">Gift Box</span><span class="sp">Retail Pack</span><span class="sp">Branded</span></div></div>
+    <div class="svc-card fu"><div class="svc-n">06</div><div class="svc-ico">📚</div><h3>Books, Diaries and More</h3><p>Custom notebooks, diaries, calendars, and book printing. Spiral, hardbound, or perfect binding with premium paper.</p><div class="svc-pills"><span class="sp">Notebooks</span><span class="sp">Calendar</span><span class="sp">Spiral</span><span class="sp">Hardbound</span></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="why" class="sec sec-mid">
+  <div class="why-grid">
+    <div class="why-card fl">
+      <div class="wc-badge">◆ Heera Printing Press</div>
+      <p class="wc-q">"Excellence is not a one-time act but a habit we print into every single order."</p>
+      <div class="wc-line"></div>
+      <div class="wc-stats">
+        <div class="ws"><span class="wsn">500+</span><span class="wsl">Clients Served</span></div>
+        <div class="ws"><span class="wsn">50K+</span><span class="wsl">Prints Delivered</span></div>
+        <div class="ws"><span class="wsn">100%</span><span class="wsl">Satisfaction</span></div>
+        <div class="ws"><span class="wsn">24x7</span><span class="wsl">Available</span></div>
+      </div>
+    </div>
+    <div class="fr">
+      <div class="tag">Why Choose Us</div>
+      <h2 class="sec-h" style="margin-bottom:2rem">The <em>Heera</em> Difference</h2>
+      <div class="wfl">
+        <div class="wf"><div class="wfi">⚡</div><div><div class="wft">Express Turnaround</div><div class="wfd">Urgent orders accepted. We work around the clock to deliver on time, every time.</div></div></div>
+        <div class="wf"><div class="wfi">🎨</div><div><div class="wft">Free Design Assistance</div><div class="wfd">No design? Our in-house team creates stunning print-ready artwork at no extra charge.</div></div></div>
+        <div class="wf"><div class="wfi">💰</div><div><div class="wft">Transparent Pricing</div><div class="wfd">No hidden costs. Full quote upfront. Bulk discounts automatically applied on large orders.</div></div></div>
+        <div class="wf"><div class="wfi">🏆</div><div><div class="wft">Premium Quality Materials</div><div class="wfd">Top-grade paper, inks, and finishing for results that look and feel exceptional.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="gallery" class="sec sec-dark">
+  <div class="dbg"></div>
+  <div class="gal-hd">
+    <div><div class="tag">Our Portfolio</div><h2 class="sec-h">Work That <em>Speaks</em></h2></div>
+    <p class="sec-p">A glimpse of the quality we deliver — from corporate stationery to grand event materials.</p>
+  </div>
+  <div class="gal-grid fu">
+    <div class="gi big"><div class="gi-em">🖨️</div><div class="gi-lb">Commercial Printing</div><div class="gi-ov"><span>✦ Bulk Print Projects</span></div></div>
+    <div class="gi tall"><div class="gi-em">🪪</div><div class="gi-lb">Business Cards</div><div class="gi-ov"><span>✦ Premium Cards</span></div></div>
+    <div class="gi"><div class="gi-em">💍</div><div class="gi-lb">Wedding Invites</div><div class="gi-ov"><span>✦ Wedding Cards</span></div></div>
+    <div class="gi"><div class="gi-em">📦</div><div class="gi-lb">Packaging</div><div class="gi-ov"><span>✦ Custom Boxes</span></div></div>
+    <div class="gi"><div class="gi-em">📋</div><div class="gi-lb">Banners and Flex</div><div class="gi-ov"><span>✦ Large Format</span></div></div>
+    <div class="gi"><div class="gi-em">📚</div><div class="gi-lb">Books and Diaries</div><div class="gi-ov"><span>✦ Bound Prints</span></div></div>
+    <div class="gi"><div class="gi-em">🎨</div><div class="gi-lb">Custom Design</div><div class="gi-ov"><span>✦ Design Studio</span></div></div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <a href="https://wa.me/917762991422?text=Hello! I want to see more samples of your work." target="_blank" class="btn-ow">View More Samples on WhatsApp</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="about" class="sec sec-light">
+  <div class="about-grid">
+    <div class="about-content fl">
+      <div class="tag">About Us</div>
+      <h2 class="sec-h dk">Heera Printing <em>Press</em></h2>
+      <p>Heera Printing Press is Begusarai's trusted destination for all printing needs. Situated in Ward No-33, Mungeriganj, we serve hundreds of businesses, institutions, and individuals with unmatched print quality.</p>
+      <p>We combine <strong>modern digital and offset printing technology</strong> with dedicated craftsmanship. Whether it is your first order of 50 cards or a bulk run of 10,000 brochures — you get the same premium treatment.</p>
+      <div class="about-pills">
+        <span class="ap">Digital Printing</span><span class="ap">Offset Printing</span><span class="ap">UV Coating</span><span class="ap">Lamination</span><span class="ap">In-house Design</span><span class="ap">Bulk Orders</span>
+      </div>
+      <p>Our mission: <strong>deliver print that makes you proud</strong> — on time, every time, at the best value in Begusarai.</p>
+      <div class="about-btns">
+        <a href="https://wa.me/917762991422?text=Hello! I want to know more about Heera Printing Press." target="_blank" class="btn-dk">📲 Talk to Us</a>
+        <a href="#services" class="btn-dk" style="background:transparent;color:var(--gold3);border-color:var(--gold3)">View Services</a>
+      </div>
+    </div>
+    <div class="fr" style="position:relative;padding-bottom:2.5rem">
+      <div class="proc-card">
+        <div class="proc-lbl">How We Work</div>
+        <div class="step"><div class="step-num">1</div><div><div class="step-t">Share Your Requirements</div><div class="step-d">WhatsApp or email us your design, quantity and deadline.</div></div></div>
+        <div class="step-ln"></div>
+        <div class="step"><div class="step-num">2</div><div><div class="step-t">Get Instant Quote</div><div class="step-d">Transparent, no-hidden-cost quote provided instantly.</div></div></div>
+        <div class="step-ln"></div>
+        <div class="step"><div class="step-num">3</div><div><div class="step-t">Approve the Proof</div><div class="step-d">Review a digital proof before we go to print.</div></div></div>
+        <div class="step-ln"></div>
+        <div class="step"><div class="step-num">4</div><div><div class="step-t">Collect or Get Delivered</div><div class="step-d">Pick up from our Begusarai shop or arrange delivery.</div></div></div>
+      </div>
+      <div class="fchip"><span class="fcn">15+</span><span class="fcl">Years of Excellence</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="testi" class="sec sec-dark">
+  <div class="dbg"></div>
+  <div class="tag">Client Reviews</div>
+  <h2 class="sec-h">What Our <em>Clients</em> Say</h2>
+  <div class="testi-grid">
+    <div class="tc fu">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">Bilkul kamaal ka kaam karte hain! Meri shaadi ke cards itne sundar bane ke sab dekhte reh gaye. Samay par delivery bhi ki. Heera Printing se zyada kya chahiye!</p>
+      <div class="tc-auth"><div class="tc-av">P</div><div><div class="tc-nm">Priya Devi</div><div class="tc-ro">Wedding Client, Begusarai</div></div></div>
+    </div>
+    <div class="tc fu">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">Hamare dukaan ke liye visiting cards aur banners yahan se hi print karate hain. 3 saal se aate hain, quality aur price dono mein sabse best hai Begusarai mein.</p>
+      <div class="tc-auth"><div class="tc-av">R</div><div><div class="tc-nm">Rahul Kumar</div><div class="tc-ro">Shop Owner, Begusarai</div></div></div>
+    </div>
+    <div class="tc fu">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">Event ke liye 2000 flyers print karaye the. Colors ekdam vivid the, paper quality premium thi. Urgent order tha phir bhi time par mil gaya. Bahut accha experience raha!</p>
+      <div class="tc-auth"><div class="tc-av">A</div><div><div class="tc-nm">Amit Singh</div><div class="tc-ro">Event Organizer</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact" class="sec sec-light">
+  <div class="contact-grid">
+    <div class="fl">
+      <div class="tag">Get In Touch</div>
+      <h2 class="sec-h dk">Let's <em>Print</em> Together</h2>
+      <p class="sec-p dk">Have a project? Reach out instantly on WhatsApp or email. We are available 24 hours a day, 7 days a week.</p>
+      <div class="iblocks">
+        <a href="https://wa.me/917762991422" target="_blank" class="ib"><div class="ib-ico ico-wa">💬</div><div><div class="ib-lbl">WhatsApp</div><div class="ib-val">+91 77629 91422</div><div class="ib-hint">Click to chat instantly</div></div></a>
+        <a href="mailto:meetshristisinha@gmail.com" class="ib"><div class="ib-ico ico-em">✉️</div><div><div class="ib-lbl">Email</div><div class="ib-val">meetshristisinha@gmail.com</div><div class="ib-hint">We reply within hours</div></div></a>
+        <a href="tel:+917762991422" class="ib"><div class="ib-ico ico-ph">📞</div><div><div class="ib-lbl">Phone</div><div class="ib-val">+91 77629 91422</div><div class="ib-hint">Call us anytime</div></div></a>
+        <div class="ib"><div class="ib-ico ico-ad">📍</div><div><div class="ib-lbl">Address</div><div class="ib-val">Ward No-33, Mungeriganj</div><div class="ib-hint">Begusarai, Bihar - 851101</div></div></div>
+        <div class="ib"><div class="ib-ico ico-ti">⏰</div><div><div class="ib-lbl">Contact Hours</div><div class="ib-val" style="color:#16a34a">Available 24x7</div><div class="ib-hint">Always here for you</div></div></div>
+      </div>
+      <a href="https://maps.google.com/?q=Mungeriganj,Begusarai,Bihar,851101" target="_blank" class="map-btn">
+        <div class="map-ico">📍</div>
+        <div><div class="map-lbl">Our Location</div><div class="map-addr">Ward No-33, Mungeriganj, Begusarai</div><div class="map-hint">Tap to open in Google Maps</div></div>
+      </a>
+    </div>
+    <div class="fbox fr">
+      <div class="ftitle">Send an Enquiry</div>
+      <div class="fsub">Fill in the details — we will reply on WhatsApp instantly!</div>
+      <div class="frow">
+        <div class="fg"><label>Your Name</label><input type="text" id="fn" placeholder="e.g. Rahul Kumar"></div>
+        <div class="fg"><label>Phone / WhatsApp</label><input type="tel" id="fp" placeholder="+91 XXXXX XXXXX"></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" id="fe" placeholder="your@email.com"></div>
+      <div class="fg">
+        <label>Service Required</label>
+        <select id="fs">
+          <option value="">Select a service...</option>
+          <option>Visiting Cards</option>
+          <option>Flex and Banners</option>
+          <option>Brochures and Flyers</option>
+          <option>Wedding and Event Cards</option>
+          <option>Books and Diaries</option>
+          <option>Custom Packaging</option>
+          <option>Bulk Order</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Quantity</label><input type="text" id="fq" placeholder="e.g. 500 cards, 2 banners..."></div>
+      <div class="fg"><label>Message</label><textarea id="fm" placeholder="Size, finish, deadline, any special requirements..."></textarea></div>
+      <button class="send-btn" onclick="sendWA()">📲 Send via WhatsApp</button>
+      <p style="font-size:.73rem;color:rgba(255,255,255,.28);text-align:center;margin-top:.9rem">Details go directly to our WhatsApp for quick response.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-logo"><div class="logo-box"><span>H</span></div> Heera Printing Press</div>
+      <p>Your trusted partner for all printing needs in Begusarai. Quality, speed, and craftsmanship — delivered every time.</p>
+      <div class="ft-contact">
+        <a href="https://wa.me/917762991422" target="_blank" class="ftc">💬 +91 77629 91422</a>
+        <a href="mailto:meetshristisinha@gmail.com" class="ftc">✉️ meetshristisinha@gmail.com</a>
+        <span class="ftc">📍 Ward No-33, Mungeriganj, Begusarai - 851101</span>
+        <span class="ftc">⏰ <span style="color:#22c55e;font-weight:600">Available 24x7</span></span>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Visiting Cards</a></li>
+        <li><a href="#services">Flex and Banners</a></li>
+        <li><a href="#services">Brochures and Flyers</a></li>
+        <li><a href="#services">Wedding Cards</a></li>
+        <li><a href="#services">Custom Packaging</a></li>
+        <li><a href="#services">Books and Diaries</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#gallery">Our Gallery</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#testi">Client Reviews</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/917762991422">WhatsApp Us</a></li>
+        <li><a href="mailto:meetshristisinha@gmail.com">Send Email</a></li>
+        <li><a href="tel:+917762991422">Call Now</a></li>
+        <li><a href="#contact">Get a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>2025 <a href="#hero">Heera Printing Press</a>. All rights reserved. Ward No-33, Mungeriganj, Begusarai - 851101</p>
+    <div class="ft-chip">◆ Premium Print Studio</div>
+  </div>
+</footer>
+
+<script>
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e, i) {
+    if (e.isIntersecting) {
+      setTimeout(function() { e.target.classList.add('vis'); }, i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fu, .fl, .fr').forEach(function(el) { obs.observe(el); });
+
+var secs = document.querySelectorAll('section[id]');
+var nls = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', function() {
+  var cur = '';
+  secs.forEach(function(s) { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  nls.forEach(function(a) { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : ''; });
+});
+
+function sendWA() {
+  var n = document.getElementById('fn').value || 'Customer';
+  var p = document.getElementById('fp').value || 'Not provided';
+  var e = document.getElementById('fe').value || 'Not provided';
+  var s = document.getElementById('fs').value || 'General Enquiry';
+  var q = document.getElementById('fq').value || 'Not specified';
+  var m = document.getElementById('fm').value || '';
+  var txt = 'Hello Heera Printing Press!\n\nName: ' + n + '\nPhone: ' + p + '\nEmail: ' + e + '\nService: ' + s + '\nQuantity: ' + q + '\nMessage: ' + m;
+  window.open('https://wa.me/917762991422?text=' + encodeURIComponent(txt), '_blank');
+}
+</script>
+</body>
+</html>
